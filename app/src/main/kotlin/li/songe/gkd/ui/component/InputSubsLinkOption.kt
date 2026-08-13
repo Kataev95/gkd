@@ -45,17 +45,17 @@ class InputSubsLinkOption {
     private fun submit() {
         val value = valueFlow.value
         if (!URLUtil.isNetworkUrl(value)) {
-            toast("非法链接")
+            toast("Некорректная ссылка")
             return
         }
         val initValue = initValueFlow.value
         if (initValue.isNotEmpty() && initValue == value) {
-            toast("未修改")
+            toast("Нет изменений")
             resume(null)
             return
         }
         if (subsItemsFlow.value.any { it.updateUrl == value }) {
-            toast("已有相同链接订阅")
+            toast("Подписка с такой ссылкой уже существует")
             return
         }
         resume(value)
@@ -87,10 +87,10 @@ class InputSubsLinkOption {
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier.fillMaxWidth(),
                     ) {
-                        Text(text = if (initValue.isNotEmpty()) "修改订阅" else "添加订阅")
+                        Text(text = if (initValue.isNotEmpty()) "Изменить подписку" else "Добавить подписку")
                         PerfIconButton(
                             imageVector = PerfIcon.HelpOutline,
-                            contentDescription = "订阅帮助",
+                            contentDescription = "Справка по подпискам",
                             onClick = throttle {
                                 cancel()
                                 mainVm.navigatePage(WebViewRoute(initUrl = ShortUrlSet.URL5))
@@ -108,7 +108,7 @@ class InputSubsLinkOption {
                             .fillMaxWidth()
                             .autoFocus(),
                         placeholder = {
-                            Text(text = "请输入订阅链接")
+                            Text(text = "Введите ссылку на подписку")
                         },
                         isError = value.isNotEmpty() && !URLUtil.isNetworkUrl(value),
                     )
@@ -123,12 +123,12 @@ class InputSubsLinkOption {
                             submit()
                         }),
                     ) {
-                        Text(text = "确定")
+                        Text(text = "Подтвердить")
                     }
                 },
                 dismissButton = {
                     TextButton(onClick = ::cancel) {
-                        Text(text = "取消")
+                        Text(text = "Отмена")
                     }
                 },
             )
