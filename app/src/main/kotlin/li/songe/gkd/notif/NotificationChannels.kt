@@ -13,7 +13,7 @@ enum class AppNotificationChannel(
     val importance: Int = NotificationManager.IMPORTANCE_LOW,
 ) {
     Service(id = "0"),
-    Snapshot(id = "1", label = "保存快照通知");
+    Snapshot(id = "1", label = "Уведомления о сохранении снимков");
 
     val displayName: String
         get() = label ?: META.appName
