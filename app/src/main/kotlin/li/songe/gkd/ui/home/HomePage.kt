@@ -22,25 +22,25 @@ sealed class BottomNavItem(
 ) {
     object Control : BottomNavItem(
         key = 0,
-        label = "首页",
+        label = "Главная",
         icon = PerfIcon.Home,
     )
 
     object SubsManage : BottomNavItem(
         key = 1,
-        label = "订阅",
+        label = "Подписки",
         icon = PerfIcon.FormatListBulleted,
     )
 
     object AppList : BottomNavItem(
         key = 2,
-        label = "应用",
+        label = "Приложения",
         icon = PerfIcon.Apps,
     )
 
     object Settings : BottomNavItem(
         key = 3,
-        label = "设置",
+        label = "Настройки",
         icon = PerfIcon.Settings,
     )
 
